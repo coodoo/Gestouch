@@ -10,6 +10,8 @@ package org.gestouch.core
 
 	/**
 	 * @author Pavel fljot
+	 * 
+	 * jx
 	 */
 	final public class Gestouch
 	{
