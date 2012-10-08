@@ -1,5 +1,11 @@
 package org.gestouch.gestures
 {
+	import flash.errors.IllegalOperationError;
+	import flash.events.EventDispatcher;
+	import flash.geom.Point;
+	import flash.system.Capabilities;
+	import flash.utils.Dictionary;
+	
 	import org.gestouch.core.Gestouch;
 	import org.gestouch.core.GestureState;
 	import org.gestouch.core.GesturesManager;
@@ -8,12 +14,6 @@ package org.gestouch.gestures
 	import org.gestouch.core.Touch;
 	import org.gestouch.core.gestouch_internal;
 	import org.gestouch.events.GestureStateEvent;
-
-	import flash.errors.IllegalOperationError;
-	import flash.events.EventDispatcher;
-	import flash.geom.Point;
-	import flash.system.Capabilities;
-	import flash.utils.Dictionary;
 	
 	
 	/**
@@ -71,11 +71,11 @@ package org.gestouch.gestures
 		/**
 		 * 
 		 */
-		gestouch_internal function get targetAdapter():IGestureTargetAdapter
+		gestouch_internal function get targetAdapter():org.gestouch.core.IGestureTargetAdapter
 		{
 			return _targetAdapter;
 		}
-		protected function get targetAdapter():IGestureTargetAdapter
+		protected function get targetAdapter():org.gestouch.core.IGestureTargetAdapter
 		{
 			return _targetAdapter;
 		}
@@ -548,9 +548,8 @@ package org.gestouch.gestures
 			updateCentralPoint();
 			_location.x = _centralPoint.x;
 			_location.y = _centralPoint.y;
-			_localLocation = targetAdapter.globalToLocal(_location);
+			_localLocation = gestouch_internal::targetAdapter.globalToLocal(_location);
 		}
-		
 		
 		/**
 		 * Executed once requiredToFail gestures have been failed and
